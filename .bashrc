@@ -162,7 +162,15 @@ shopt -s histappend
 
 # Make prompt informative
 # See:  http://www.ukuug.org/events/linux2003/papers/bash_tips/
-PS1="\[\033[0;34m\][\u@\h:\w]$\[\033[0m\]"
+PS1="\[\033[0;36m\][\u@\h:\w]$\[\033[0m\]"
+
+
+if [ "$TERM" != "dumb" ]; then
+    [ -e "$HOME/.dircolors" ] && DIR_COLORS="$HOME/.dircolors"
+    [ -e "$DIR_COLORS" ] || DIR_COLORS = ""
+    eval "`dircolors -b $DIR_COLORS`"
+fi
+
 
 ## -----------------------
 ## -- 2) Set up aliases --
